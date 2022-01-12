@@ -24,7 +24,7 @@ def k_SRBF(lat,lon,k_init,min_p,min_d,max_d,R,workers):
     data_all = np.empty((len(lat_all),2))
     data_all[:,0] = car_x
     data_all[:,1] = car_y
-    kmeans = cluster.KMeans(n_clusters=k_init,n_jobs=-1,n_init=1,max_iter=100).fit(data_all)
+    kmeans = cluster.KMeans(n_clusters=k_init,n_jobs=-1,n_init=1,max_iter=1000,tol=1e-10).fit(data_all)
     
     data_all = None
     C_clustered = kmeans.cluster_centers_
@@ -116,7 +116,7 @@ def k_SRBF(lat,lon,k_init,min_p,min_d,max_d,R,workers):
             data = np.empty((len(lat_all[total_ind[indis1]]),2))
             data[:,0] = car_x[total_ind[indis1]]
             data[:,1] = car_y[total_ind[indis1]]
-            kmeans = cluster.KMeans(n_clusters=2,n_init=1,max_iter=100,n_jobs=-1).fit(data)
+            kmeans = cluster.KMeans(n_clusters=2,n_init=1,max_iter=500,tol=1e-10,n_jobs=-1).fit(data)
             C_clustered1 = kmeans.cluster_centers_
             
             carx_rbf1 = C_clustered1[:,0]
