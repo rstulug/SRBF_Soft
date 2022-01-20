@@ -5,13 +5,11 @@ Created on Sat Dec  5 13:13:16 2020
 
 @author: rst
 """
-from numba import jit
 import numpy as np
 import other_functions
 import coeff_matrix
 from sklearn import cluster
 
-@jit
 def k_SRBF(lat,lon,k_init,min_p,min_d,max_d,R,workers):
     lat_all = []
     lon_all = []
