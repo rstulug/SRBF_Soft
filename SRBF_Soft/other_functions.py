@@ -226,7 +226,6 @@ def multiprocessing_model_coeff_pointmass(locdata,locdata_grid,Lmin,sph_dist,fun
         del results
     return(coeff_mat)
 
-@jit
 def read_file(filename):
     file = open(filename,encoding="utf8", errors='ignore')
     lines = file.read().splitlines()
@@ -243,7 +242,6 @@ def read_file(filename):
         grav[i]= np.float(line[4])
     return(lat,lon,H,grav)
 
-@jit
 def read_gnss_file(filename):
     file = open(filename,encoding="utf8", errors='ignore')
     lines = file.read().splitlines()
@@ -258,7 +256,6 @@ def read_gnss_file(filename):
         H[i]   = np.float(line[3])
     return(lat,lon,H)
    
-@jit
 def MCVCE(coeff_mat,grav):
     data_number = len(coeff_mat)
     normal_matrix = [None]*data_number
@@ -305,7 +302,6 @@ def MCVCE(coeff_mat,grav):
 
     return(parameter,sigma)
 
-@jit
 def LS(coeff_mat,grav):
     data_number = len(coeff_mat)
     normal_matrix = [None]*data_number
@@ -327,7 +323,6 @@ def LS(coeff_mat,grav):
     
     return(parameter)
 
-@jit
 def test_normal_eqution(coeff_mat):
     data_number = len(coeff_mat)
     normal_matrix = [None]*data_number
