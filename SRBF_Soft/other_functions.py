@@ -76,7 +76,6 @@ def sph_dist(lan1,lon1,lan2,lon2,workers,sph_func=sph_func):
         pool.join()
     return(coeff_mat)  
 
-@jit
 def geodetic2cartesian(fi,lamda,h):
     a = 6378137.0
     e2 = 0.00669438002290
@@ -92,7 +91,6 @@ def geodetic2cartesian(fi,lamda,h):
     r = np.transpose(np.array((x,y,z)))
     return(r)
     
-@jit 
 def car2sph(x,y,R):
     
     lamda = np.arctan2(y,x)*180/np.pi
@@ -101,7 +99,6 @@ def car2sph(x,y,R):
     
     return(fi,lamda)
 
-@jit
 def sph2car(lat,lon,R):
     lat = lat*np.pi/180.0
     lon = lon*np.pi/180.0
