@@ -111,7 +111,6 @@ def sph2car(lat,lon,R):
     
     return(x,y)
 
-@jit
 def ell2sph(fi,lamda,h):
     a = 6378137.0
     e2 = 0.00669438002290
