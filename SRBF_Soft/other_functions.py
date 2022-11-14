@@ -118,7 +118,11 @@ def ell2sph(fi,lamda,h):
     
     fi = np.arctan(((N+h)*np.cos(fi))/(((N*(1-e2)+h))*np.sin(fi)))
     r = np.sqrt((((N+h)*np.cos(fi))**2)+(((N*(1-e2)+h))*np.sin(fi))**2)
-    return(90-(fi*180/np.pi),lamda,r)    
+    if fi*180/np.pi<0:
+        fi = 90+(fi*180/np.pi)
+    else:
+        fi = 90-(fi*180/np.pi)     
+    return(fi,lamda,r)  
     
 @jit
 def coeff_mat_pointmass(args):
