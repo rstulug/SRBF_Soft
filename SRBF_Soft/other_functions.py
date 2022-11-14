@@ -120,10 +120,10 @@ def ell2sph(fi,lamda,h):
     r = np.sqrt((((N+h)*np.cos(fi))**2)+(((N*(1-e2)+h))*np.sin(fi))**2)
     for i in range(len(fi)):
         if fi[i]*180/np.pi<0:
-            fi[i] = 90+(fi[i]*180/np.pi)
+            fi[i] = -(90+(fi[i]*180/np.pi))
         else:
             fi[i] = 90-(fi[i]*180/np.pi)     
-    return(fi,lamda,r)    
+    return(fi,lamda,r)     
     
 @jit
 def coeff_mat_pointmass(args):
