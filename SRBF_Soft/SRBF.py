@@ -555,7 +555,7 @@ if qgeoid == 1:
             
         estimated_qgeoid = ((long_wav_quasi_qgeoid + estimated_disturbing_qgeoid) / normal_gravity_qgeoid) + rtm_qgeoid
     else:
-        estimated_qgeoid = (np.dot(coeff_mat_qgeoid,parameter)/(1e5))/norm_fac 
+        estimated_qgeoid = ((np.dot(coeff_mat_qgeoid,parameter)/(1e5))/norm_fac) / normal_gravity_qgeoid
         
     coeff_mat_qgeoid = None; sph_dist_qgeoid = None
     print('Quasi-geoid Points Calculation Done. Process time: {:.2f} minute'.format((time.time()-nw)/60))
